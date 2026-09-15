@@ -1,12 +1,12 @@
-# My Git Notes
+# Git Notes
 
-Just writing down what I actually understand about Git now, in my own words, so I can come back to this later instead of re-learning it from scratch.
+Just writing down what I actually understand about Git now, in my own words, so I can come back to this later instead of relearning it from scratch.
 
 ## The basic idea first
 
-Git isn't really "saving diffs" — every commit is a full snapshot of the project at that point in time, and it's linked to the commit before it. That's why the history is a chain (technically a graph, since branches can split and merge). A branch is honestly nothing fancy — it's just a little pointer/label that says "this branch is currently at this commit." That's why making a new branch is instant, it's not copying any files, it's just creating a new pointer. HEAD is just another pointer that tracks whichever branch (or commit) you're currently "on."
+Git for every commit is a full snapshot of the project at that point in time, and it's linked to the commit before it. That's why the history is a chain (technically a graph, since branches can split and merge). A branch is just a little pointer or a label that says "this branch is currently at this commit." That's why making a new branch is instant, it's not copying any files, it's just creating a new pointer. HEAD is just another pointer that tracks whichever branch (or commit) you're currently "on." You can detach head from a file by checking it out to a commit. al the changes occur at the position of the head. 
 
-Because of this, deleting a branch doesn't actually delete the commits — they just become unreachable and hang around until Git eventually cleans them up.
+also, deleting a branch doesn't actually delete the commits as they just become unreachable and hang around until Git eventually cleans them up.
 
 ## The hidden `.git` folder — where all of this actually lives
 
