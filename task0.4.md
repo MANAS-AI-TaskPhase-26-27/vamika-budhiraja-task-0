@@ -1,8 +1,8 @@
-# Machine Learning Fundamentals - My Notes
+# Machine Learning Fundamentals 
 
-These are notes I put together while going through a few resources on ML basics, supervised and unsupervised learning, and data cleaning. Keeping it here so I have one place to revisit the core ideas instead of jumping between five tabs.
+basic report over machine learning by taking into account a few resources on ML basics, supervised and unsupervised learning, and data cleaning.
 
-Sources I used:
+Sources used:
 - Google's Intro to ML (developers.google.com)
 - IBM's explainer on Supervised Learning
 - IBM's explainer on Unsupervised Learning
@@ -114,7 +114,7 @@ Since there's no ground truth to check against, it's harder to know if the model
 
 ---
 
-## 4. Supervised vs Unsupervised, Simply Put
+## 4. Supervised vs Unsupervised learning 
 
 The core difference: supervised learning is given the correct answers up front and learns to match inputs to those answers. Unsupervised learning is given no answers and has to find structure/patterns on its own.
 
@@ -122,7 +122,26 @@ Supervised learning tends to be more accurate for well defined problems because 
 
 ---
 
-## 5. Data Cleaning Basics (from the Kaggle course)
+## 5. Reinforcement Learning (RL)
+
+Unlike supervised and unsupervised learning, RL doesn't learn from a fixed dataset of labeled examples or unlabeled examples sitting around. Instead, an agent learns by interacting with an environment, taking actions, and getting rewards or penalties based on the outcome of those actions.
+
+Over time, the model builds up a **policy**, which is basically its strategy for choosing actions that lead to the most reward in the long run. It's a trial and error process rather than a "here's the correct answer, learn from it" process like supervised learning.
+
+A simple way to think about it: it's less like a student studying old exam papers (supervised learning) and more like learning to ride a bike by actually trying, falling, adjusting, and slowly figuring out what works through repeated attempts.
+
+Common use cases include training robots to perform physical tasks like walking or grasping objects, and training software agents to play games (AlphaGo learning to play Go is the classic example).
+
+A few important things aboutabout RL:
+- It doesn't need labeled data, which is an advantage over supervised learning.
+- It can handle complex, sequential decision making problems where the "right" first move depends on what happens later.
+- Training can be unstable or inconsistent early on since it's learning purely from trial and error.
+- It usually needs a lot of interaction with an environment (real or simulated) to learn well, which can be resource intensive.
+- Models can sometimes exploit loopholes in how rewards are set up rather than actually solving the intended task properly, something usually called reward hacking.
+
+---
+
+## 6. Data Cleaning Basics (from the Kaggle course)
 
 Before any of the modeling stuff above can actually work well, the data usually needs cleaning first. Real world data is messy, and this course breaks the process into five parts.
 
@@ -136,31 +155,5 @@ Before any of the modeling stuff above can actually work well, the data usually 
 - **Normalization** - changes the shape of the distribution itself, usually to make it more like a normal (bell curve) distribution. Useful for methods that assume data is normally distributed.
 - These two terms get mixed up a lot, but scaling is about range, normalization is about distribution shape.
 
-### c) Parsing dates
-- Dates in raw data often get read as plain text instead of actual date objects, which breaks any time based analysis.
-- The fix is converting the date column into a proper datetime format, so you can then pull out the day, month, year, and do things like sort chronologically or plot trends over time.
-- Inconsistent date formats (like day/month/year mixed with month/day/year) are a common source of errors here, so it needs checking carefully rather than assuming one format everywhere.
-
-### d) Character encodings
-- Text files can be saved in different encodings, and if you read a file using the wrong one, you get garbled characters or errors (like UnicodeDecodeError).
-- UTF-8 is the standard/safe encoding to aim for. When in doubt, it helps to detect the file's original encoding first, then convert and save it as UTF-8 going forward.
-
-### e) Inconsistent data entry
-- This is about cleaning up things like inconsistent capitalization, extra whitespace, or slightly different spellings that actually refer to the same value (like "usa," "U.S.A," "United States" all meaning the same country).
-- Common fixes: lowercasing text, trimming whitespace, and using fuzzy matching to catch near-duplicate entries that are basically typos of each other.
-
-### Why this all matters
-Messy data leads to a model learning from bad or misleading signals, no matter how good the algorithm is. Data cleaning isn't the exciting part of ML, but it's the part that decides whether everything downstream (training, evaluation, predictions) actually means anything.
 
 ---
-
-## 6. Quick Summary to Remember
-
-- ML trains a model on data instead of hardcoding rules.
-- Supervised = learns from labeled data, used for regression (numbers) and classification (categories).
-- Unsupervised = finds patterns in unlabeled data, mainly through clustering, association, and dimensionality reduction.
-- Reinforcement learning = learns via rewards/penalties through trial and error.
-- Generative AI = creates new content based on learned patterns.
-- Good datasets need both size and diversity.
-- Training = model adjusts itself based on the gap (loss) between its prediction and the real answer.
-- Clean data (missing values sorted, consistent scale, proper dates, correct encoding, consistent entries) is what makes any of the above actually reliable.
